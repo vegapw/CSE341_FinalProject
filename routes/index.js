@@ -4,13 +4,16 @@ const cars = require('./cars');
 const categories = require('./carCategories');
 const locations = require('./locations');
 const reservations = require('./reservations');
+const auth = require('./auth');
 const swagger = require('./swagger');
 
 router.use('/', swagger);
 
 router.get('/', (req, res) => {
-    res.send('Main page');
+    res.send(req.session.passport !== undefined ? "Logged in":"Logged out");
 });
+
+router.use('/google', auth);
 
 router.use('/cars', cars);
 
