@@ -16,7 +16,7 @@ const getAll = async (req, res) => {
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json('Internar Server Error');
+    res.status(500).json('Internal Server Error');
   }
 
 };

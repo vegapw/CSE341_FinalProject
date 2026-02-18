@@ -5,36 +5,12 @@
     "description": "Car Rental project for CSE-341 - Web Services",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-finalproject-lpm6.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "tags": [
-          "Main"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/cars/": {
       "get": {
         "tags": [
