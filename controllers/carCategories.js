@@ -23,6 +23,9 @@ const getAll = async (req, res) => {
 const getCategoryById = async (req, res) => {
   //#swagger.tags=['CarCategories']
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json('Must use a valid Car Category id.');
+    }
     const result = await CarCategories.findById(req.params.id).lean();
     if (result) {
           res.setHeader('Content-Type', 'application/json');
@@ -56,6 +59,9 @@ const createCarCategory = async (req, res) => {
 const updateCarCategory = async (req, res) => {
   //#swagger.tags=['CarCategories']
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json('Must use a valid Car Category id.');
+    }
     const carCategories = {
         name : req.body.name,
         pricePerDay : req.body.pricePerDay,
@@ -80,9 +86,12 @@ const updateCarCategory = async (req, res) => {
 const deleteCarCategory = async (req, res) => {
   //#swagger.tags=['CarCategories']
   try {
+    if (!ObjectId.isValid(req.params.id)) {
+      return res.status(400).json('Must use a valid Car Category id.');
+    }
     let result = await CarCategories.findById(req.params.id).lean();
     if (!result) {
-      return res.status(404).json('Car Categories not found');
+      return res.status(404).json('Car Category not found');
     }
     result = await CarCategories.findByIdAndDelete({ _id : req.params.id});
     res.status(204).send();

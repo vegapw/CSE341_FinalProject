@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 
 require('./config/passport')(passport);
 
-connectDB();
+//connectDB();
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
@@ -42,7 +42,10 @@ app .use(bodyParser.json())
 process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.fd, `Caught Exception: ${err}\n` + `Exception Origin: ${origin}`);
 });
-
+/*
 app.listen(port, () => {
     console.log(`Running on port: ${port} in ${process.env.NODE_ENV} mode`);
 });
+*/
+
+module.exports = app;

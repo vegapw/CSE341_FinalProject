@@ -27,13 +27,13 @@ const getLocationById = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
         return res.status(400).json('Must use a valid Location id.');
     }
-        const result = await Location.findById(req.params.id).lean();
-        if (result) {
-          res.setHeader('Content-Type', 'application/json');
-          res.status(200).json(result);
-        } else {
-          res.status(404).json('Location not found.');
-        }
+    const result = await Location.findById(req.params.id).lean();
+    if (result) {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result);
+    } else {
+      res.status(404).json('Location not found.');
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json('Internar Server Error');
